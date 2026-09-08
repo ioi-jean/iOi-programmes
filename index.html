@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iOi Programmes Hub</title>
+<style>
+  :root {
+    --tan: #D0C8BB;
+    --yellow: #FFC030;
+    --blue: #00ABD8;
+    --red: #E4101B;
+    --purple: #595696;
+    --pink: #F7BCCB;
+    --orange: #F37D25;
+    --brown: #85746E;
+    --teal: #009A78;
+
+    --paper: #FBF8F3;
+    --panel: #F3EEE5;
+    --ink: #2A2521;
+    --ink-soft: #5B5450;
+
+    --font: Verdana, Geneva, sans-serif;
+    --radius: 20px;
+    --maxw: 1040px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  a { color: inherit; }
+  :focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: var(--panel);
+    border-bottom: 1px solid rgba(42,37,33,0.08);
+    padding: 56px 0 48px;
+  }
+
+  .eyebrow {
+    font-size: 0.95rem;
+    color: var(--teal);
+    font-weight: bold;
+    margin: 0 0 6px;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    font-weight: bold;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-intro {
+    max-width: 62ch;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  main { padding: 48px 0 64px; }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 800px) {
+    .card-grid { grid-template-columns: 1fr; }
+  }
+
+  .hub-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    min-height: 220px;
+    transition: transform 0.15s ease;
+  }
+  .hub-card:hover, .hub-card:focus-visible { transform: translateY(-3px); }
+
+  .hub-card[data-area="plans"] { background: var(--teal); }
+  .hub-card[data-area="case-studies"] { background: var(--orange); }
+  .hub-card[data-area="frameworks"] { background: var(--brown); }
+  .hub-card[data-area="facilitator"] { background: var(--purple); }
+
+  .hub-card h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0 0 10px;
+  }
+  .hub-card p {
+    font-size: 0.98rem;
+    margin: 0 0 22px;
+    opacity: 0.95;
+  }
+  .hub-card .cta {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background: rgba(255,255,255,0.18);
+    padding: 9px 16px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+
+  footer {
+    padding: 40px 0 60px;
+    text-align: center;
+  }
+  footer p {
+    max-width: 56ch;
+    margin: 0 auto;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">iOi programmes</p>
+    <h1>Programmes Hub</h1>
+    <p class="hero-intro">
+      A starting point for iOi's programmes - project plans, guides and more.
+    </p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="card-grid">
+
+      <a class="hub-card" data-area="PFFF" href="PFFF.html">
+        <div>
+          <h2>Playing for a Fairer Future</h2>
+          <p>A home for the plan and delivery of Playing for a Fairer Future for Tower Hamlets, Doncaster and Belfast.</p>
+        </div>
+        <span class="cta">View programme</span>
+      </a>
+
+      <a class="hub-card" data-area="YMiTD" href="YMiTD.html">
+        <div>
+          <h2>Young Makers in the Docks</h2>
+          <p>Details for the 4-week delivery of after-school club sessions.</p>
+        </div>
+        <span class="cta">View programme</span>
+      </a>
+
+      <a class="hub-card" data-area="POP" href="POP.html">
+        <div>
+          <h2>The Power of Play</h2>
+          <p>The plan and direction for the next year of LEGO-funded The Power of Play.</p>
+        </div>
+        <span class="cta">View programme</span>
+      </a>
+
+       <a class="hub-card" data-area="IITC" href="IITC.html">
+        <div>
+          <h2>iOi in the Classroom</h2>
+          <p>Delving into the expansion and delivery of online resource hub for educators.</p>
+        </div>
+        <span class="cta">View programme</span>
+      </a>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>This hub links out to iOi's programmes on a detailed level.</p>
+  </div>
+</footer>
+
+</body>
+</html>
+
