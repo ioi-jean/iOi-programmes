@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playing for a Fairer Future — Tower Hamlets Longitudinal Study Hub</title>
+<style>
+  :root {
+    --tan: #D0C8BB;
+    --yellow: #FFC030;
+    --blue: #00ABD8;
+    --red: #E4101B;
+    --purple: #595696;
+    --pink: #F7BCCB;
+    --orange: #F37D25;
+    --brown: #85746E;
+    --teal: #009A78;
+
+    --paper: #FBF8F3;
+    --panel: #F3EEE5;
+    --ink: #2A2521;
+    --ink-soft: #5B5450;
+
+    --font: Verdana, Geneva, sans-serif;
+    --radius: 20px;
+    --maxw: 960px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  a { color: inherit; }
+  :focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    background: var(--panel);
+    border-bottom: 1px solid rgba(42,37,33,0.08);
+    padding: 56px 0 40px;
+  }
+
+  .eyebrow {
+    font-size: 0.95rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4.6vw, 2.9rem);
+    font-weight: 700;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-intro {
+    max-width: 66ch;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+  }
+  .hero-stats li {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  .hero-stats strong {
+    display: block;
+    font-size: 1.3rem;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* Phase nav: the planning path */
+  nav.cycle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+  }
+  nav.cycle a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: #241f1c;
+    padding: 10px 18px 10px 16px;
+    border-radius: 999px;
+    background: var(--stage-color, var(--teal));
+    opacity: 0;
+    animation: rise 0.5s ease forwards;
+    transition: transform 0.15s ease;
+  }
+  nav.cycle a:hover, nav.cycle a:focus-visible { transform: translateY(-2px); }
+  nav.cycle a .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.65);
+  }
+  nav.cycle a[data-stage="define"] { --stage-color: var(--red); color: #fff; }
+  nav.cycle a[data-stage="consent"] { --stage-color: var(--yellow); }
+  nav.cycle a[data-stage="design"] { --stage-color: var(--blue); color: #fff; }
+  nav.cycle a[data-stage="recruit"] { --stage-color: var(--purple); color: #fff; }
+  nav.cycle a[data-stage="launch"] { --stage-color: var(--pink); }
+  nav.cycle a:nth-child(1) { animation-delay: 0.02s; }
+  nav.cycle a:nth-child(2) { animation-delay: 0.09s; }
+  nav.cycle a:nth-child(3) { animation-delay: 0.16s; }
+  nav.cycle a:nth-child(4) { animation-delay: 0.23s; }
+  nav.cycle a:nth-child(5) { animation-delay: 0.30s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: translateY(0); } }
+
+  /* ---------- Section scaffolding ---------- */
+  section { padding: 56px 0; }
+  section + section { border-top: 1px solid rgba(42,37,33,0.08); }
+
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 1.9rem);
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .section-lede {
+    color: var(--ink-soft);
+    max-width: 68ch;
+    margin: 0 0 32px;
+  }
+
+  /* ---------- Research question callout ---------- */
+  .rq-callout {
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 30px 32px;
+    margin-bottom: 30px;
+  }
+  .rq-callout p.rq-label {
+    margin: 0 0 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--pink);
+  }
+  .rq-callout p.rq-text {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.45;
+    max-width: 60ch;
+  }
+
+  /* ---------- Model chain ---------- */
+  .model-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 32px;
+  }
+  .model-chain .link {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: var(--panel);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .model-chain .link.emph {
+    background: var(--teal);
+    color: #fff;
+  }
+  .model-chain .arrow {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+  }
+
+  .model-figure {
+    margin: 0 0 32px;
+    text-align: center;
+  }
+  .model-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    background: #fff;
+  }
+  .model-figure figcaption {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Toolkit / question table (reused pattern) ---------- */
+  .toolkit-scroll { overflow-x: auto; border-radius: var(--radius); }
+  table.toolkit {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 640px;
+    background: var(--panel);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  table.toolkit th, table.toolkit td {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.95rem;
+    vertical-align: top;
+  }
+  table.toolkit thead th {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    border-bottom: 2px solid rgba(42,37,33,0.1);
+  }
+  table.toolkit tbody th {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  table.toolkit tbody tr + tr th, table.toolkit tbody tr + tr td {
+    border-top: 1px solid rgba(42,37,33,0.08);
+  }
+  .note {
+    margin-top: 18px;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    border-left: 3px solid var(--orange);
+    padding-left: 14px;
+  }
+  .note strong { color: var(--ink); }
+
+  /* ---------- Phase journey (the planning path) ---------- */
+  .journey { position: relative; }
+  .stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr);
+    gap: 28px;
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    margin-bottom: 20px;
+    color: #241f1c;
+  }
+  .stage[data-stage="define"] { background: var(--red); color: #fff; }
+  .stage[data-stage="consent"] { background: var(--yellow); }
+  .stage[data-stage="design"] { background: var(--blue); color: #fff; }
+  .stage[data-stage="recruit"] { background: var(--purple); color: #fff; }
+  .stage[data-stage="launch"] { background: var(--pink); }
+
+  .stage-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .stage-sub { font-size: 0.98rem; margin: 0; opacity: 0.92; }
+
+  .stage-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .stage-cols h4 {
+    margin: 0 0 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: none;
+    opacity: 0.8;
+  }
+  .stage-cols ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.94rem;
+  }
+  .stage-cols li { margin-bottom: 6px; }
+
+  @media (max-width: 720px) {
+    .stage { grid-template-columns: 1fr; }
+    .stage-cols { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Age-group cards ---------- */
+  .age-card {
+    background: var(--panel);
+    border-radius: 16px;
+    padding: 26px 26px 24px;
+    margin-bottom: 20px;
+    border-left: 8px solid var(--teal);
+  }
+  .age-card[data-tone="a"] { border-left-color: var(--red); }
+  .age-card[data-tone="b"] { border-left-color: var(--blue); }
+  .age-card[data-tone="c"] { border-left-color: var(--purple); }
+
+  .age-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .age-head h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .flex-tag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--teal);
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .age-block { margin-bottom: 14px; }
+  .age-block:last-child { margin-bottom: 0; }
+  .age-block h4 {
+    margin: 0 0 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brown);
+  }
+  .age-block p, .age-block ul {
+    margin: 0;
+    font-size: 0.96rem;
+  }
+  .age-block ul { padding-left: 18px; }
+  .age-block li { margin-bottom: 4px; }
+
+  /* ---------- Recruitment message cards ---------- */
+  .msg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  .msg-card {
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .msg-card h3 {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--teal);
+  }
+  .msg-card p { margin: 0 0 10px; font-size: 0.95rem; }
+  .msg-card p:last-child { margin-bottom: 0; }
+  .msg-card .msg-q { font-weight: 600; }
+  @media (max-width: 720px) {
+    .msg-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Incentive chips ---------- */
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip-row .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: var(--panel);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .chip-row .chip:nth-child(5n+1) { background: var(--yellow); }
+  .chip-row .chip:nth-child(5n+2) { background: var(--pink); }
+  .chip-row .chip:nth-child(5n+3) { background: var(--tan); }
+  .chip-row .chip:nth-child(5n+4) { background: #cdeee4; }
+  .chip-row .chip:nth-child(5n+5) { background: #fcd9c0; }
+
+  footer {
+    padding: 40px 0 60px;
+    text-align: center;
+  }
+  footer p {
+    max-width: 58ch;
+    margin: 0 auto;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">iOi research hub</p>
+    <h1>Playing for a Fairer Future — Tower Hamlets Longitudinal Study</h1>
+    <p class="hero-intro">
+      A working hub for the creation, planning and running of the large-scale
+      longitudinal study behind Playing for a Fairer Future — the National
+      Lottery-funded programme following 50,000 children across five UK
+      regions over five years. Tower Hamlets is where the original Power of
+      Play work began, so this is the natural base for building and testing
+      the study before it rolls out nationally.
+    </p>
+    <ul class="hero-stats">
+      <li><strong>5 yrs</strong>study length</li>
+      <li><strong>50,000</strong>children reached UK-wide</li>
+      <li><strong>17,600+</strong>already reached in Tower Hamlets</li>
+      <li><strong>3</strong>age-banded survey tracks</li>
+    </ul>
+    <nav class="cycle" aria-label="Study planning phases">
+      <a href="#define" data-stage="define"><span class="dot"></span>Define</a>
+      <a href="#consent" data-stage="consent"><span class="dot"></span>Consent</a>
+      <a href="#design" data-stage="design"><span class="dot"></span>Design</a>
+      <a href="#recruit" data-stage="recruit"><span class="dot"></span>Recruit</a>
+      <a href="#launch" data-stage="launch"><span class="dot"></span>Launch</a>
+    </nav>
+  </div>
+</header>
+
+<section id="framework">
+  <div class="wrap">
+    <h2>Research question &amp; framework</h2>
+    <p class="section-lede">
+      Everything below — naming, consent, survey design, recruitment — is in
+      service of one question, tracked through the same underlying model
+      across all three age groups.
+    </p>
+
+    <div class="rq-callout">
+      <p class="rq-label">Overarching research question</p>
+      <p class="rq-text">How does participation in play-based experiences support the development of imagination, agency and belonging towards shaping a fairer future for children over time?</p>
+    </div>
+
+    <div class="model-chain" aria-label="Longitudinal model">
+      <span class="link emph">Play</span>
+      <span class="arrow">&rarr;</span>
+      <span class="link emph">Imagination</span>
+      <span class="arrow">&rarr;</span>
+      <span class="link">Curious / Make / Share / Belong / Challenge</span>
+      <span class="arrow">&rarr;</span>
+      <span class="link">Agency &amp; Belonging</span>
+      <span class="arrow">&rarr;</span>
+      <span class="link emph">Fairer Futures</span>
+    </div>
+
+    <figure class="model-figure">
+      <img src="data:image/png;base64,__IMG_B64__" alt="Learning solar system diagram: Imagination at the core, surrounded by Curious, Make, Share, Belong and Challenge, each linked to an 'I can' statement and competency, radiating out to related ideas.">
+      <figcaption>The learning solar system — imagination at the core, with contributing, connecting, changing, playing and understanding as the competencies mapped and tracked, and fairer futures as the long-term outcome.</figcaption>
+    </figure>
+
+    <div class="toolkit-scroll">
+      <table class="toolkit">
+        <thead>
+          <tr>
+            <th scope="col">Competency</th>
+            <th scope="col">&ldquo;I can&rdquo; statement</th>
+            <th scope="col">Draft survey question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Curious</th>
+            <td>I can wonder</td>
+            <td>Overall, how often have you wondered about things recently?</td>
+          </tr>
+          <tr>
+            <th scope="row">Make</th>
+            <td>I can create</td>
+            <td>Overall, how capable have you felt of creating something new recently?</td>
+          </tr>
+          <tr>
+            <th scope="row">Share</th>
+            <td>I can question</td>
+            <td>Overall, how willing have you been to share and discuss ideas recently?</td>
+          </tr>
+          <tr>
+            <th scope="row">Belong</th>
+            <td>I can explore</td>
+            <td>Overall, how willing have you been to explore people, places, and perspectives recently?</td>
+          </tr>
+          <tr>
+            <th scope="row">Challenge</th>
+            <td>I can try</td>
+            <td>Overall, how willing have you been to try new things recently?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><strong>Standardise across groups:</strong> whatever each age band's tool looks like on the surface, make sure the underlying concept it's measuring (well-being, confidence, reading ability, etc.) maps to the same analytical variable, so the three tracks stay comparable over five years.</p>
+  </div>
+</section>
+
+<section id="phases">
+  <div class="wrap">
+    <h2>Planning phases</h2>
+    <p class="section-lede">
+      Five phases from naming the study through to launching the first wave
+      of data collection. Not strictly sequential — Consent and Design can
+      run in parallel — but each needs to be signed off before Launch.
+    </p>
+
+    <div class="journey">
+
+      <div class="stage" id="define" data-stage="define">
+        <div>
+          <p class="stage-name">Define</p>
+          <p class="stage-sub">Naming the study and deciding how children are involved in shaping it.</p>
+        </div>
+        <div class="stage-cols">
+          <div>
+            <h4>Decisions to make</h4>
+            <ul>
+              <li>What we're naming the longitudinal study for maximum external impact — options on the table: &ldquo;iOi research&rdquo; or &ldquo;Playing for a Fairer Future study&rdquo;</li>
+              <li>Whether children are involved as co-researchers</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Current thinking</h4>
+            <ul>
+              <li>Yes to co-researchers — via an Imagination Council, plus training for the children involved</li>
+              <li>Naming decision affects how the study reads to funders, press and partner schools — worth testing both options</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage" id="consent" data-stage="consent">
+        <div>
+          <p class="stage-name">Consent</p>
+          <p class="stage-sub">Finalising ethics, consent and data handling before any collection begins.</p>
+        </div>
+        <div class="stage-cols">
+          <div>
+            <h4>To finalise</h4>
+            <ul>
+              <li>Information sheet — separate versions for teachers, parents/carers, and children</li>
+              <li>Consent form</li>
+              <li>Filing system and data security plan</li>
+              <li>Monday.com CRM set up</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Watch for</h4>
+            <ul>
+              <li>Three different audiences need three different reading levels on the information sheet — the children's version especially</li>
+              <li>Data security plan needs to be live before baseline collection starts, not after</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage" id="design" data-stage="design">
+        <div>
+          <p class="stage-name">Design</p>
+          <p class="stage-sub">Building and pilot-testing the age-banded tools.</p>
+        </div>
+        <div class="stage-cols">
+          <div>
+            <h4>To build</h4>
+            <ul>
+              <li>Baseline questionnaires, assessment metrics or interview scripts for each age group</li>
+              <li>Mini-pilot with 2&ndash;3 children per age band</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Watch for</h4>
+            <ul>
+              <li>Pilot before committing — a tool that works for 8&ndash;10s on a tablet may not translate to the 5&ndash;7s' bucket-sort approach</li>
+              <li>Keep the underlying variable standardised across all three tools (see framework note above)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage" id="recruit" data-stage="recruit">
+        <div>
+          <p class="stage-name">Recruit</p>
+          <p class="stage-sub">Engaging the adults who make participation possible.</p>
+        </div>
+        <div class="stage-cols">
+          <div>
+            <h4>To do</h4>
+            <ul>
+              <li>Liaise directly with connected adults — headteachers, youth club leaders, regional charity coordinators</li>
+              <li>Distribute parent/carer and teacher packs; host brief information sessions on the long-term value of the study</li>
+              <li>Roll out the engagement strategy (see below) to sustain participation over 5 years</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Watch for</h4>
+            <ul>
+              <li>Keep messaging light, fun and engaging — this is what attracts all types of parents/carers, not just the already-engaged ones</li>
+              <li>Use the Playing for a Fairer Future logo consistently across packs and sessions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage" id="launch" data-stage="launch">
+        <div>
+          <p class="stage-name">Launch</p>
+          <p class="stage-sub">Getting field-ready and opening the first wave of data collection.</p>
+        </div>
+        <div class="stage-cols">
+          <div>
+            <h4>To do</h4>
+            <ul>
+              <li>Set up baseline data collection tracking sheets (Monday/Excel)</li>
+              <li>Train field researchers (UCL) and child co-researchers</li>
+              <li>Confirm minimum parent/carer recruitment targets are reached</li>
+              <li>Launch the first wave of data collection</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Watch for</h4>
+            <ul>
+              <li>This first wave sets the baseline every future year gets compared against — prioritise completeness over speed</li>
+              <li>Confirm co-researcher training has actually landed before they're in the field, not just been delivered</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="age-groups">
+  <div class="wrap">
+    <h2>Age-banded survey design</h2>
+    <p class="section-lede">
+      Three tracks, one underlying model. Each is built for how children at
+      that age actually engage — physical and proxy-led for the youngest,
+      gamified and visual in the middle band, independent and digital for
+      the oldest.
+    </p>
+
+    <div class="toolkit-scroll">
+      <table class="toolkit">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Age 5&ndash;7</th>
+            <th scope="col">Age 8&ndash;10</th>
+            <th scope="col">Age 11&ndash;13</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Format</th>
+            <td>Visual, play, proxy survey</td>
+            <td>Interactive digital survey</td>
+            <td>Independent digital survey</td>
+          </tr>
+          <tr>
+            <th scope="row">Approach</th>
+            <td>Short, task-based inputs</td>
+            <td>Gamified, icon scales</td>
+            <td>Standard 5-point Likert</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <article class="age-card" data-tone="a" style="margin-top:24px;">
+      <div class="age-head">
+        <h3>Group 1 — Ages 5&ndash;7</h3>
+        <span class="flex-tag">Proxy-Plus</span>
+      </div>
+      <div class="age-block">
+        <h4>Methodology</h4>
+        <p>Proxy-Plus reporting: rely on parents and teachers for baseline developmental data, but capture the child's own perspective using the Mosaic Approach — combining observations, cameras, child-led tours and drawing.</p>
+      </div>
+      <div class="age-block">
+        <h4>Survey design</h4>
+        <p>Physical &ldquo;smiley face&rdquo; sorting buckets — children drop a token into a happy, neutral or sad bucket to rate an activity.</p>
+      </div>
+    </article>
+
+    <article class="age-card" data-tone="b">
+      <div class="age-head">
+        <h3>Group 2 — Ages 8&ndash;10</h3>
+        <span class="flex-tag">Gamified</span>
+      </div>
+      <div class="age-block">
+        <h4>Methodology</h4>
+        <p>Tablet-based, gamified questionnaires.</p>
+      </div>
+      <div class="age-block">
+        <h4>Survey design</h4>
+        <p>Minimal text. 3-point visual Likert scales — star ratings or emojis rather than text descriptions. Keep it short and snappy to avoid cognitive fatigue.</p>
+      </div>
+    </article>
+
+    <article class="age-card" data-tone="c">
+      <div class="age-head">
+        <h3>Group 3 — Ages 11&ndash;13</h3>
+        <span class="flex-tag">Independent</span>
+      </div>
+      <div class="age-block">
+        <h4>Methodology</h4>
+        <p>Independent, mobile-friendly digital surveys, or text-message data collection.</p>
+      </div>
+      <div class="age-block">
+        <h4>Survey design</h4>
+        <p>Standard 5-point Likert scales.</p>
+      </div>
+    </article>
+
+    <p class="note"><strong>Next up:</strong> design a proxy survey for Group 1 parents, an emoji survey for Group 2, and a standard online survey for Group 3 — then pilot all three before Recruit begins in earnest.</p>
+  </div>
+</section>
+
+<section id="recruitment">
+  <div class="wrap">
+    <h2>Recruitment messaging</h2>
+    <p class="section-lede">
+      Draft framing for the two audiences who bring children into the study — kept light, fun and led with what's in it for them, not the research mechanics.
+    </p>
+
+    <div class="msg-grid">
+      <div class="msg-card">
+        <h3>Parents / carers</h3>
+        <p>Take part in a play &amp; imagination project from the iOi! You'll have the opportunity to play and try new things, and be invited to exclusive iOi events and workshops — while feeding into a National Lottery funded research project.</p>
+        <p class="msg-q">What are we doing?</p>
+        <p>A large-scale research project over 5 years, following children's experiences over time to understand how play, creativity and imagination help young people grow and thrive.</p>
+        <p class="msg-q">What will you do?</p>
+        <p>Surveys created by children, for children, exciting resources and activities, and the chance of winning vouchers.</p>
+      </div>
+      <div class="msg-card">
+        <h3>Schools / educators</h3>
+        <p>Take part in a large-scale play project from the iOi!</p>
+        <p class="msg-q">What are we doing?</p>
+        <p>Over 5 years, this project follows children's experiences to understand how play, creativity and imagination help improve confidence and skills — in the classroom and across transitional moments.</p>
+        <p class="msg-q">What will you do?</p>
+        <p>Share the opportunity with your children and parents/carers, and become a school hub for play, imagination and creativity — opening up funded workshops and events for your community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="engagement">
+  <div class="wrap">
+    <h2>Engagement strategy — keeping families in for 5 years</h2>
+    <p class="section-lede">
+      A longitudinal study lives or dies on retention. These are the touchpoints planned to keep families engaged across every wave.
+    </p>
+    <div class="chip-row">
+      <span class="chip">Remuneration</span>
+      <span class="chip">Birthday cards</span>
+      <span class="chip">Milestone markers</span>
+      <span class="chip">Impact certificates</span>
+      <span class="chip">Exclusive workshops / events</span>
+      <span class="chip">Exclusive swag</span>
+      <span class="chip">Imagination box / tinker tub</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Tower Hamlets is where Power of Play began and where over 17,600 children have already been reached — the natural place to build and pilot the study before it scales to Doncaster, West Belfast and beyond.</p>
+  </div>
+</footer>
+
+</body>
+</html>
