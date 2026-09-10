@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playing for a Fairer Future — Tower Hamlets Longitudinal Study Hub</title>
+<title>PFFF - Tower Hamlets study</title>
 <style>
   :root {
     --tan: #D0C8BB;
@@ -274,6 +274,10 @@
   .stage[data-stage="design"] { background: var(--blue); color: #fff; }
   .stage[data-stage="recruit"] { background: var(--purple); color: #fff; }
   .stage[data-stage="launch"] { background: var(--pink); }
+  .stage[data-stage="ethics"] { background: var(--tan); }
+  .stage[data-stage="roadmap"] { background: var(--tan); }
+  .stage[data-stage="open"] { background: var(--tan); }
+  
 
   .stage-name {
     font-size: 1.6rem;
@@ -306,6 +310,13 @@
     .stage-cols { grid-template-columns: 1fr; }
   }
 
+    /* Flow strip */
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 34px; font-weight: 600; font-size: 0.95rem; }
+  .flow .step { background: var(--panel); padding: 8px 14px; border-radius: 999px; }
+  .flow .arrow { color: var(--ink-soft); }
+  .flow .step.outcome { background: var(--teal); color: #fff; }
+
+  
   /* ---------- Age-group cards ---------- */
   .age-card {
     background: var(--panel);
@@ -411,27 +422,43 @@
     color: var(--ink-soft);
     font-size: 0.95rem;
   }
+
+   /* Checklist */
+  .checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .checklist li { display: flex; gap: 10px; align-items: flex-start; background: var(--panel); border-radius: 12px; padding: 12px 16px; font-size: 0.95rem; }
+  .checklist li .box { flex: none; width: 18px; height: 18px; border-radius: 5px; border: 2px solid var(--teal); margin-top: 2px; }
+
+  /* Roadmap / phase cards */
+  .week-card { background: var(--panel); border-radius: 16px; padding: 24px 24px 22px; margin-bottom: 18px; border-left: 8px solid var(--teal); }
+  .week-card[data-tone="ethics"] { border-left-color: var(--red); }
+  .week-card[data-tone="tools"] { border-left-color: var(--yellow); }
+  .week-card[data-tone="recruit"] { border-left-color: var(--blue); }
+  .week-card[data-tone="launch"] { border-left-color: var(--purple); }
+  .week-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 6px; }
+  .week-head h3 { margin: 0; font-size: 1.2rem; font-weight: 700; }
+  .flex-tag { font-size: 0.76rem; font-weight: 600; color: #fff; background: var(--brown); padding: 5px 12px; border-radius: 999px; white-space: nowrap; }
+  .week-card ul { margin: 8px 0 0; padding-left: 18px; font-size: 0.95rem; }
+  .week-card li { margin-bottom: 4px; }
+
+  /* Open questions */
+  .qa { background: var(--panel); border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; }
+  .qa .q { font-weight: 700; margin: 0 0 4px; font-size: 0.98rem; }
+  .qa .a { margin: 0; font-size: 0.94rem; color: var(--ink-soft); }
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">iOi programmes hub</p>
-    <h1>Playing for a Fairer Future — Tower Hamlets Longitudinal Study</h1>
+    <p class="eyebrow">iOi - Playing for a Fairer Future</p>
+    <h1>Tower Hamlets - Longitudinal study</h1>
     <p class="hero-intro">
-      A working hub for the creation, planning and running of the large-scale
-      longitudinal study behind Playing for a Fairer Future — the National
-      Lottery-funded programme following 50,000 children across five UK
-      regions over five years. Tower Hamlets is where the original Power of
-      Play work began, so this is the natural base for building and testing
-      the study before it rolls out nationally.
+One place for creating, planning and running the large-scale longitudinal study in Tower Hamlets — where Power of Play began. Covers the research question, the age-group study design, recruitment, ethics and consent, retention, and the build-to-launch roadmap.
     </p>
     <ul class="hero-stats">
       <li><strong>5 yrs</strong>study length</li>
-      <li><strong>50,000</strong>children reached UK-wide</li>
-      <li><strong>17,600+</strong>already reached in Tower Hamlets</li>
-      <li><strong>3</strong>age-banded survey tracks</li>
+      <li><strong>50,000</strong>children reached UK-wide by 2031</li>
+      <li><strong>£2.46m</strong>National Lottery funding</li>
     </ul>
     <nav class="cycle" aria-label="Study planning phases">
       <a href="#define" data-stage="define"><span class="dot"></span>Define</a>
@@ -439,6 +466,9 @@
       <a href="#design" data-stage="design"><span class="dot"></span>Design</a>
       <a href="#recruit" data-stage="recruit"><span class="dot"></span>Recruit</a>
       <a href="#launch" data-stage="launch"><span class="dot"></span>Launch</a>
+     <a href="#ethics" data-stage="ethics"><span class="dot"></span>Ethics</a>
+     <a href="#roadmap" data-stage="roadmap"><span class="dot"></span>Roadmap</a>
+      <a href="#open" data-stage="open"><span class="dot"></span>Open questions</a>
     </nav>
   </div>
 </header>
@@ -457,22 +487,14 @@
       <p class="rq-text">How does participation in play-based experiences support the development of imagination, agency and belonging towards shaping a fairer future for children over time?</p>
     </div>
 
-    <div class="model-chain" aria-label="Longitudinal model">
-      <span class="link emph">Play</span>
-      <span class="arrow">&rarr;</span>
-      <span class="link emph">Imagination</span>
-      <span class="arrow">&rarr;</span>
-      <span class="link">Curious / Make / Share / Belong / Challenge</span>
-      <span class="arrow">&rarr;</span>
-      <span class="link">Agency &amp; Belonging</span>
-      <span class="arrow">&rarr;</span>
-      <span class="link emph">Fairer Futures</span>
+    <div class="flow">
+      <span class="step">Play</span><span class="arrow">→</span>
+      <span class="step">Imagination</span><span class="arrow">→</span>
+      <span class="step">Curious / Make / Share / Belong / Challenge</span><span class="arrow">→</span>
+      <span class="step outcome">Agency &amp; Belonging</span><span class="arrow">→</span>
+      <span class="step outcome">Fairer Futures</span>
     </div>
 
-    <figure class="model-figure">
-      <img src="data:image/png;base64,__IMG_B64__" alt="Learning solar system diagram: Imagination at the core, surrounded by Curious, Make, Share, Belong and Challenge, each linked to an 'I can' statement and competency, radiating out to related ideas.">
-      <figcaption>The learning solar system — imagination at the core, with contributing, connecting, changing, playing and understanding as the competencies mapped and tracked, and fairer futures as the long-term outcome.</figcaption>
-    </figure>
 
     <div class="toolkit-scroll">
       <table class="toolkit">
@@ -779,6 +801,99 @@
       <span class="chip">Exclusive workshops / events</span>
       <span class="chip">Exclusive swag</span>
       <span class="chip">Imagination box / tinker tub</span>
+    </div>
+  </div>
+</section>
+
+  <section id="ethics">
+  <div class="wrap">
+    <h2>Ethics, consent &amp; data</h2>
+    <p class="section-lede">To finalise before any fieldwork begins.</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Information sheet — separate versions for teachers, parents/carers, and children</li>
+      <li><span class="box"></span>Consent form</li>
+      <li><span class="box"></span>Filing system set up, with a clear plan for keeping data secure</li>
+      <li><span class="box"></span>Monday CRM configured for the study</li>
+      <li><span class="box"></span>Children involved as co-researchers via the Imagination Council, with training</li>
+    </ul>
+  </div>
+</section>
+
+<section id="retention">
+  <div class="wrap">
+    <h2>Engagement &amp; retention strategy</h2>
+    <p class="section-lede">Ways of keeping families engaged and thanked across a 5-year study.</p>
+    <div class="chip-cloud">
+      <span>Birthday cards</span>
+      <span>Milestones</span>
+      <span>Impact certificates</span>
+      <span>Exclusive workshops / events</span>
+      <span>Exclusive swag</span>
+      <span>Imagination box / tinker tub</span>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <h2>Build-to-launch roadmap</h2>
+
+    <article class="week-card" data-tone="ethics">
+      <div class="week-head"><h3>Phase 1 — Ethics, consent &amp; data</h3><span class="flex-tag">Foundations</span></div>
+      <ul>
+        <li>Finalise information sheets and consent form</li>
+        <li>Set up the filing system and data security plan</li>
+        <li>Stand up Monday CRM for the study</li>
+      </ul>
+    </article>
+
+    <article class="week-card" data-tone="tools">
+      <div class="week-head"><h3>Phase 2 — Tool &amp; survey design, pilot testing</h3><span class="flex-tag">Design</span></div>
+      <ul>
+        <li>Draft and create baseline questionnaires, assessment metrics and interview scripts</li>
+        <li>Run a mini-pilot with 2–3 children from each age group we're working with</li>
+      </ul>
+    </article>
+
+    <article class="week-card" data-tone="recruit">
+      <div class="week-head"><h3>Phase 3 — Adult engagement &amp; recruitment</h3><span class="flex-tag">Community</span></div>
+      <ul>
+        <li>Liaise directly with connected adults — headteachers, youth club leaders, regional charity coordinators</li>
+        <li>Distribute parent/carer and teacher packs; host brief information sessions on the study's long-term value</li>
+        <li>Roll out the engagement/retention strategy (birthday cards, milestones, impact certificates)</li>
+      </ul>
+    </article>
+
+    <article class="week-card" data-tone="launch">
+      <div class="week-head"><h3>Phase 4 — Field readiness &amp; launch</h3><span class="flex-tag">Launch</span></div>
+      <ul>
+        <li>Set up baseline data collection tracking sheets (Monday / Excel)</li>
+        <li>Train field researchers and child co-researchers</li>
+        <li>Confirm minimum parent/carer recruitment targets are reached</li>
+        <li>Launch the first wave of data collection</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="open">
+  <div class="wrap">
+    <h2>Open questions</h2>
+    <div class="qa">
+      <p class="q">What are we naming the longitudinal study for maximum external impact?</p>
+      <p class="a">Under discussion — options include "iOi research" or "Playing for a Fairer Future study."</p>
+    </div>
+    <div class="qa">
+      <p class="q">Are we involving children as co-researchers?</p>
+      <p class="a">Yes — via the Imagination Council, with training.</p>
+    </div>
+    <div class="qa">
+      <p class="q">Who trains the field researchers and child co-researchers?</p>
+      <p class="a">To confirm — university partner (UCL) named in early planning notes.</p>
+    </div>
+    <div class="qa">
+      <p class="q">How do we standardise across the three age-group instruments?</p>
+      <p class="a">Ensure each core construct (e.g. well-being, confidence, reading ability) maps to the same underlying analytical variable so results are comparable across groups.</p>
     </div>
   </div>
 </section>
