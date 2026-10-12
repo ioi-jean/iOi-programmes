@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Child voice at the iOi</title>
+<style>
+:root{--paper:#FBF8F3;--panel:#F3EEE5;--ink:#2A2521;--soft:#5B5450;--line:rgba(42,37,33,.14);
+--blue:#00ABD8;--yellow:#FFC030;--red:#E4101B;--teal:#009A78;--purple:#595696;--pink:#F7BCCB;
+--font:Verdana,Geneva,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1F1B18;--panel:#2A2521;--ink:#F3EEE5;--soft:#C9C0B6;--line:rgba(243,238,229,.18);--purple:#9D9AD6;--teal:#2FC7A1}}
+:root[data-theme="dark"]{--paper:#1F1B18;--panel:#2A2521;--ink:#F3EEE5;--soft:#C9C0B6;--line:rgba(243,238,229,.18);--purple:#9D9AD6;--teal:#2FC7A1}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+header{background:var(--panel);padding:52px 0 34px;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 14px;letter-spacing:-.01em;line-height:1.15}
+.lede{max-width:62ch;font-size:1.06rem;color:var(--soft);margin:0 0 24px}
+.ring{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.ring li{padding:8px 16px;border-radius:999px;font-weight:700;font-size:.92rem;color:#fff}
+.ring li:nth-child(2){color:#241f1c}
+nav{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;gap:4px 18px;overflow-x:auto;padding-top:11px;padding-bottom:11px}
+nav a{white-space:nowrap;text-decoration:none;font-size:.9rem;font-weight:600;color:var(--soft)}
+nav a:hover{color:var(--ink);text-decoration:underline}
+section{padding:46px 0 8px}
+h2{font-size:1.6rem;margin:0 0 8px;line-height:1.25}
+h3{font-size:1.05rem;margin:0 0 6px}
+p{margin:0 0 12px;max-width:70ch}.soft{color:var(--soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:18px 0}
+.box{background:var(--panel);border-radius:16px;padding:18px 20px;border-left:6px solid var(--c,var(--teal))}
+.box p{font-size:.93rem;margin:0}
+ul{padding-left:20px;margin:6px 0 12px}li{margin-bottom:5px;font-size:.94rem}
+.quote{background:var(--panel);border-radius:20px;padding:24px 26px;margin:20px 0;font-size:1.05rem;max-width:none}
+/* cycle */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.tabs button{font:inherit;font-weight:700;font-size:.95rem;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;background:var(--c);color:#fff;opacity:.62;transition:opacity .15s,transform .15s}
+.tabs button[data-c="yellow"]{color:#241f1c}
+.tabs button[aria-selected="true"]{opacity:1;transform:translateY(-2px);box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--c)}
+.pane{background:var(--panel);border-radius:20px;padding:24px 26px;margin-top:16px;border-top:8px solid var(--c)}
+.pane h3{font-size:1.25rem}.pane .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px 28px}
+.pane h4{margin:10px 0 4px;font-size:.95rem}
+.tag{display:inline-block;font-size:.85rem;color:var(--soft);margin-bottom:10px}
+/* timeline */
+.steps{list-style:none;padding:0;margin:18px 0;border-left:3px solid var(--line)}
+.steps li{position:relative;padding:0 0 16px 22px;margin:0}
+.steps li:before{content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--c,var(--teal))}
+.steps b{display:block;font-size:.95rem}.steps span{font-size:.9rem;color:var(--soft)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.scroll{overflow-x:auto}
+footer{padding:40px 0 56px;color:var(--soft);font-size:.85rem}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Child voice at the Institute of Imagination</h1>
+<p class="lede">How we are moving from asking children for feedback to children helping shape what the iOi does, and how the Imagination Council becomes the heart of that. Pulled together from the child voice strategy, the Council brief and workshop plans, and the team's own reflections.</p>
+<ul class="ring" aria-label="The Imagination Cycle">
+<li style="background:var(--blue)">Wonder</li><li style="background:var(--yellow)">Make</li><li style="background:var(--red)">Challenge</li><li style="background:var(--teal)">Explore</li><li style="background:var(--purple)">Share</li></ul>
+</div></header>
+<nav aria-label="Sections"><div class="wrap">
+<a href="#story">Where we started</a><a href="#principles">Principles</a><a href="#cycle">Imagination Cycle</a><a href="#council">Imagination Council</a><a href="#phases">Three phases</a><a href="#funding">Funding</a><a href="#next">Next steps</a></div></nav>
+
+<main class="wrap">
+<section id="story">
+<h2>Where we started</h2>
+<p>Child voice already happens across the iOi, but mostly in pockets. A two-hour team session grounded the strategy in what we already do. The strategy work set out to make it consistent, visible and measurable.</p>
+<div class="grid">
+<div class="box" style="--c:var(--blue)"><h3>Imagination Champions</h3><p>An early co-creation model: 12 children and 5 teachers working with us through 6 touch points per school theme, testing activities and giving feedback on programmes.</p></div>
+<div class="box" style="--c:var(--yellow)"><h3>Programme-level voice</h3><p>STEAM Live focus groups and pupil interviews, a teacher group, Imagination Box testing with SEND educators and parents, and co-design in Power of Play.</p></div>
+<div class="box" style="--c:var(--red)"><h3>What the team session surfaced</h3><p>In a two-hour session to finesse the strategy, the team said time is short (often one-hour activities), delivery dominates conversations, and we need confidence, techniques and capacity to turn what children say into quotes and actions rather than numbers.</p></div>
+</div>
+<p class="soft">The team also asked for clarity on how child voice differs from family voice, how it changes between a lone child and a group, and what to do when children's answers don't match what we expected.</p>
+</section>
+
+<section id="principles">
+<h2>Principles and strategy 2026 to 2029</h2>
+<div class="quote">The vision: every child involved with the iOi has the power, opportunity and confidence to shape the experiences, environments and decisions that affect them, with imagination, fun and play at the core.</div>
+<div class="grid">
+<div class="box"><h3>Children are experts</h3><p>Their perspectives are knowledge, not just feedback.</p></div>
+<div class="box"><h3>Imagination is a right</h3><p>A right, not a luxury, whatever a child's background.</p></div>
+<div class="box"><h3>Participation leads to influence</h3><p>Children can see how their ideas shaped decisions.</p></div>
+<div class="box"><h3>Inclusive by design</h3><p>Including socioeconomic disadvantage, SEND, care experience and neurodiversity.</p></div>
+<div class="box"><h3>Safe and age-appropriate</h3><p>Enjoyable, accessible and underpinned by safeguarding.</p></div>
+<div class="box"><h3>Co-creation over consultation</h3><p>Children help define the questions, not just react to answers.</p></div>
+<div class="box"><h3>Transparency and accountability</h3><p>Children hear what was decided, what happened, and why if it couldn't be done.</p></div>
+</div>
+<p>The strategy has been narrowed to five objectives so it matches the five stages of our pedagogy, rather than adding another framework for staff to carry.</p>
+</section>
+
+<section id="cycle">
+<h2>The Imagination Cycle</h2>
+<p>A child's confidence is their position in the cycle, not a separate measure. When a child reaches Share they return to Wonder, this time helping spark someone else's curiosity. Select a stage to see its objective.</p>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="pane" id="pane" role="tabpanel" tabindex="0"></div>
+</section>
+
+<section id="council">
+<h2>The Imagination Council</h2>
+<p>A diverse group of children who share ideas, test concepts, co-design experiences and influence decisions. It is the main home for ongoing decision-making in the Challenge stage of the cycle.</p>
+<div class="quote">Our promise: when you share your ideas with us, we will listen, take them seriously, tell you what happened next and show you how your imagination has helped shape the iOi.</div>
+
+<h3>How it will work</h3>
+<div class="grid">
+<div class="box" style="--c:var(--blue)"><h3>Members</h3><p>12 to 20 children aged about 8 to 13, recruited for diversity of geography, ethnicity, gender, background, SEND, care experience and school setting. Membership rotates.</p></div>
+<div class="box" style="--c:var(--yellow)"><h3>Core Council</h3><p>Meets quarterly to advise on key projects, review plans and concepts, and shape strategy.</p></div>
+<div class="box" style="--c:var(--red)"><h3>Project panels</h3><p>Short-term groups for a festival, exhibition, new programme, research project, communications campaign or even hiring staff.</p></div>
+<div class="box" style="--c:var(--teal)"><h3>Meetings</h3><p>Likely Saturdays, two hours. Welcome and icebreaker, creative warm-up, challenge, action, choices (voting, ranking, debating), then reflect and plan next.</p></div>
+</div>
+
+<h3>A year with the Council</h3>
+<ol class="steps" style="list-style:none">
+<li style="--c:var(--yellow)"><b>Autumn</b><span>Recruit and onboard members.</span></li>
+<li style="--c:var(--blue)"><b>Winter</b><span>Explore priorities and identify key areas of focus.</span></li>
+<li style="--c:var(--teal)"><b>Spring</b><span>Co-design projects and give feedback on developing initiatives.</span></li>
+<li style="--c:var(--purple)"><b>Summer</b><span>Celebrate achievements, publish the impact report, hold a graduation.</span></li>
+</ol>
+
+<h3>Designed with children first</h3>
+<p>Before the Council is finalised, we are running a two-hour design workshop with 8 to 15 children. They answer why the Council should exist, what it should do, who needs a seat, what makes children feel heard, and what would make them want to join. Activities include If I Could, the Superpower Challenge, a Dream Council Design Studio, the Missing Voices Map, the Listening Ladder and a Lego prototype challenge. The output is a short report: children's vision, priority topics, how it should work, Council promises and top recommendations. We then go back and show children exactly what we included.</p>
+
+<h3>Recruitment and recognition</h3>
+<ul>
+<li>Initial strands through Bonner, Marner and Cayley schools, coordinated with the longitudinal study so we don't overload senior leaders and teachers.</li>
+<li>Possible wider recruitment via Instagram and LinkedIn, with a parent and carer form covering consent.</li>
+<li>Welcome kit, membership card and lanyard, an option to opt in for a second year, and a graduation with certificate or badge.</li>
+<li>Safeguarding set up before the first meeting: boundaries, behaviour guidance, ratios and risk assessment.</li>
+</ul>
+
+<h3>How we will know it is working</h3>
+<div class="scroll"><table>
+<tr><th>Participation</th><th>Experience</th><th>Influence</th><th>Impact</th></tr>
+<tr><td>Children involved, diversity, attendance and retention</td><td>Percent who feel listened to, feel safe, would take part again</td><td>Recommendations made, actioned, partially actioned</td><td>Programme changes, new ideas, strategic decisions influenced</td></tr></table></div>
+<p style="margin-top:14px"><b>Year one:</b> recruit 13 to 20 members, agree terms of reference, hold four in-person meetings, produce a child-led Annual Imagination Report, and deliver at least three tangible changes that come directly from Council recommendations.</p>
+</section>
+
+<section id="phases">
+<h2>Putting it into action: three phases</h2>
+<p>The team session mapped what is already happening, then sorted new ideas into three phases that grow from our own practice towards something other organisations can use.</p>
+<div class="grid">
+<div class="box" style="--c:var(--yellow)"><h3>Already happening</h3><ul><li>A facilitator guide for the Imagination Cycle, with 3 to 5 questions per stage and behaviours to watch for</li><li>A confidence cycle survey, tested in Young Makers in the Docks</li><li>An Imagination Passport booklet for children to track their voice, also being tested there</li><li>Belfast work and Imagination Council recruitment at Bonner</li></ul></div>
+<div class="box" style="--c:var(--blue)"><h3>Phase 1: build the basics</h3><ul><li>A toolkit of methods: maps, signs, drawing, stamps</li><li>A physical kit for Harrison College students</li><li>Training peer researchers as part of Playing for a Fairer Future</li><li>Trialling child voice strategies in iOi programmes</li><li>A scenario guide for when a child's answer doesn't match the session</li></ul></div>
+<div class="box" style="--c:var(--teal)"><h3>Phase 2: pilot and share</h3><ul><li>3 to 5 small pilots that vary school setting, geography, recruitment method and demographics</li><li>iOi play researchers and play ambassadors: children confident enough to lead sessions elsewhere</li><li>A shareable framework and toolkit for involving children in programmes</li><li>A purchasable child voice kit for educators, charities and organisations</li></ul></div>
+<div class="box" style="--c:var(--purple)"><h3>Phase 3: spread the expertise</h3><ul><li>A core and flexible toolkit others can replicate or adapt</li><li>Best practice guidance and a one-page policy brief</li><li>An annual showcase presenting findings, closing the loop publicly</li><li>Licensing or train-the-trainer so the framework can scale beyond iOi delivery</li><li>Pilot learnings repackaged into case studies</li></ul></div>
+</div>
+<p>Principles from the session: track and test rather than only measure outcomes, keep data gathering light (for example children's own evidence of impact, such as a council zine, video or podcast), and plan for prep time, recruiting time, relationship building and costs. In Playing for a Fairer Future, advocacy, the Imagination Council test and the longitudinal study are in scope; a large-scale test and a national test are not.</p>
+<h3>Everyday techniques</h3>
+<ul><li><b>Voting:</b> stickers, Menti, movement response games</li><li><b>Creative feedback:</b> crafts, writing on large sheets, mood boards, feedback bunting, storytelling dice, hands-on prototyping</li><li><b>Small group discussion:</b> for example, speaking with one to three families works well in the London Museum's New Museum Family Panel</li></ul>
+<h3>Questions to answer as we evaluate</h3>
+<ul><li>Who decides what success looks like?</li><li>When and how do young people shape evaluation questions or methods?</li><li>How are findings determined and shared with young people?</li><li>What decisions have changed as a result?</li><li>How clear is it that young people's views have been acted upon?</li></ul>
+</section>
+
+<section id="funding">
+<h2>Funding and wider links</h2>
+<p>Playing for a Fairer Future (a five-year project) carries much of the strategy: children as co-creators in every location, targeted work with underserved communities, evidence for the National Lottery, and the longitudinal study. The Council may involve children as co-researchers in that study.</p>
+<p>Gaps that need other funding:</p>
+<ul>
+<li><b>Embedding org-wide:</b> framework, impact assessments, staff toolkits, training and KPIs.</li>
+<li><b>The Council itself:</b> accessibility support, a future coordinator, recruitment and recognition budgets.</li>
+<li><b>Children's Imagination Report:</b> larger-scale research and evaluation.</li>
+<li><b>Opportunities:</b> participation and children's rights funders, a sellable child voice toolkit and training for schools and charities, and a university research partner to validate our approach.</li>
+</ul>
+<p>An idea under discussion is an Imagination Influence Index: children answer five questions (did adults listen, did my ideas shape something, can I see the evidence, can my imagination change things, would I help again) combined into one annual headline measure.</p>
+</section>
+
+<section id="next">
+<h2>Next steps</h2>
+<ol class="steps">
+<li><b>Strategy V2</b><span>Fold in the team session's edits to the vision and principles, its shortlist of year one quick wins and everyone's personal actions. Rework objectives into five SMART goals tied to the cycle, then circulate V2 with a You Said, We Did note.</span></li>
+<li style="--c:var(--yellow)"><b>Children's Council workshop</b><span>Held later in the year, fed by the team's shortlist.</span></li>
+<li style="--c:var(--red)"><b>Council launch</b><span>School recruitment (Bonner first), with the first in-person session planned for November or December.</span></li>
+</ol>
+</section>
+</main>
+<footer><div class="wrap">Compiled from iOi internal child voice documents. Draft: details will change as children shape the work.</div></footer>
+
+<script>
+var S=[
+{n:"Wonder",s:"Ask and understand",c:"blue",v:"var(--blue)",o:"Prioritise underrepresented voices",d:"Children from underserved communities, with SEND, care experience, refugee or migrant backgrounds, and neurodivergent children.",l:"First contact through a taster or drop-in. The child responds to prompts and watches others, without yet offering ideas unprompted.",f:"Ask gently and use low-barrier tools such as stamps and drawing.",a:["Build a shared toolkit of listening methods: maps, signs, drawing, stories, scribble and stamp, labelling","Design quick-fire questions that work in sessions under two hours","Ask children directly, separate from family voice"]},
+{n:"Make",s:"Play and build",c:"yellow",v:"var(--yellow)",o:"Build creative participation into every programme",d:"Design studios, storytelling, model-making and digital idea walls.",l:"Starts building within a theme and is comfortable in the group, but still works from prompts.",f:"Give real building tasks. Encourage without directing.",a:["Extend co-design from flagship programmes into shorter sessions","Use lightweight artefacts-lab making (stickers, cardboard) for drop-ins","Begin with \u201cwhat do you want to build?\u201d"]},
+{n:"Challenge",s:"Change and choose",c:"red",v:"var(--red)",o:"Establish an Imagination Council",d:"Testing ideas, reviewing programmes, influencing priorities and advising on communications.",l:"Believes their idea is worth putting forward, picks between real options and is willing to try and be wrong.",f:"Offer genuine choices. Back their attempt even if it doesn't work.",a:["Launch the Council with rotating, diverse membership","Create fast sticker or stamp voting so choosing works in short sessions","Train staff to facilitate decisions without steering"]},
+{n:"Explore",s:"Connect and do",c:"teal",v:"var(--teal)",o:"Embed child voice across the organisation",d:"Framework, impact assessment, toolkit and KPIs: the mechanics of acting on what children say.",l:"Acts unprompted within the group, explores and initiates without needing an adult to start things.",f:"Hand over initiative. Let them lead a moment of the session.",a:["Make You Said, We Did a team habit tracked by every programme","Use the taster-to-Saturday-session model for longer engagement","Protect time for child voice in session planning","Roll out a toolkit and training for staff and volunteers"]},
+{n:"Share",s:"Show and contribute",c:"purple",v:"var(--purple)",o:"Demonstrate impact and accountability",d:"Close the loop with children, then broadcast it through reports, exhibitions and policymakers.",l:"A Council member or peer mentor who shares impact publicly, questions decisions, and starts the next child's wonder.",f:"Give a real platform: represent the iOi, mentor peers, sit in on decisions.",a:["Capture quotes and actions from every session, not just numbers","Publish a regular children's insight report for policymakers and partners","Show children what changed, not just adults","Run child-led exhibitions and showcases"]}];
+var P=["We ask, because your ideas matter to us","We build it together, your ideas in our hands","You choose, we listen and follow your lead","We do it, turning your ideas into action","We show you the difference you've made"],
+I=["I ask questions about things that interest me. I can wonder about everything.","I make things from my ideas. I can make what I imagine.","I keep trying and trying again. I can be brave enough to try.","I enjoy exploring new ideas. I can explore because I belong here.","I share my ideas with other people. I can show my voice and help others."];
+var tabs=document.getElementById("tabs"),pane=document.getElementById("pane");
+function show(i){var s=S[i];
+[].forEach.call(tabs.children,function(b,j){b.setAttribute("aria-selected",j===i)});
+pane.style.setProperty("--c",s.v);
+pane.innerHTML="<h3>"+(i+1)+". "+s.n+"</h3><span class='tag'>"+s.s+"</span><p><b>Objective: "+s.o+".</b> "+s.d+"</p><div class='two'><div><h4>What it looks like</h4><p>"+s.l+"</p><h4>Facilitator focus</h4><p>"+s.f+"</p></div><div><h4>Key actions</h4><ul>"+s.a.map(function(x){return"<li>"+x+"</li>"}).join("")+"</ul></div></div>"}
+S.forEach(function(s,i){var b=document.createElement("button");b.textContent=s.n;b.setAttribute("role","tab");b.dataset.c=s.c;b.style.setProperty("--c",s.v);b.onclick=function(){show(i)};tabs.appendChild(b)});
+show(0);
+</script>
+</body>
+</html>
